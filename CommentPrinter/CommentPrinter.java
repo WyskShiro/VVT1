@@ -33,8 +33,11 @@ public class CommentPrinter {
 				resultado += caractere;
 
 			} else if (estado == 4) {
+				/*Finaliza um comentario, adiciona-o na lista de comentarios encontrados
+				 *E reinicia a busca por outro comentário
+				 */
 				if (caractere == '/') {
-				    comentariosEncontrados.add(resultado);
+				    comentariosEncontrados.add(resultado.substring(0, resultado.length() - 1));
 				    resultado = "";
 				    estado = 1;
 				}
@@ -45,6 +48,8 @@ public class CommentPrinter {
 			}
 		}
 
+		//Se existe ao menos um comentário, retorna a lista com o(s) comentário(s)
+		//Se não, retorna null
 		return comentariosEncontrados.size() == 0 ? null : comentariosEncontrados;
 	}
 
@@ -52,14 +57,17 @@ public class CommentPrinter {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String linha = br.readLine();
 
+		//Vai pegando todas as linhas da entrada
 		while (linha != null) {
-            List<String> comentarios = commentPrinter(linha);
+                    List<String> comentarios = commentPrinter(linha);
 
-            if (comentarios != null) {
-                comentarios.forEach(System.out::println);
-            }
+		    //E exibe todos os comentários dessa linha, caso haja pelo menos um
+                    if (comentarios != null) {
+                        comentarios.forEach(System.out::println);
+                    }
 
-			linha = br.readLine();
+		    //E le a proxima linha
+	  	    linha = br.readLine();
 		}
 	}
 }
