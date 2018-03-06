@@ -37,14 +37,15 @@ public class CommentPrinter {
 				 *E reinicia a busca por outro comentário
 				 */
 				if (caractere == '/') {
-				    comentariosEncontrados.add(resultado.substring(0, resultado.length() - 1));
-				    resultado = "";
-				    estado = 1;
-				}
+					 comentariosEncontrados.add(resultado.substring(0, resultado.length() - 1));
+					 resultado = "";
+					 estado = 1;
+					}
 				if (Character.isLetter(caractere)) {
 					estado = 3;
+					resultado += caractere;
 				} 
-				resultado += caractere;
+				
 			}
 		}
 
