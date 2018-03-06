@@ -40,8 +40,12 @@ public class CommentPrinter {
 					 comentariosEncontrados.add(resultado.substring(0, resultado.length() - 1));
 					 resultado = "";
 					 estado = 1;
+					
 					}
-				if (Character.isLetter(caractere)) {
+				else if (caractere == '*') {
+					resultado += caractere;
+				}
+				else {
 					estado = 3;
 					resultado += caractere;
 				} 
