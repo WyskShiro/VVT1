@@ -40,8 +40,8 @@ public class CommentPrinter {
 				    comentariosEncontrados.add(resultado.substring(0, resultado.length() - 1));
 				    resultado = "";
 				    estado = 1;
-				}
-				if (Character.isLetter(caractere)) {
+				    continue;
+				} else if (caractere != '*') {
 					estado = 3;
 				} 
 				resultado += caractere;
@@ -55,19 +55,27 @@ public class CommentPrinter {
 
 	public static void main(String[]args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String linha = br.readLine();
+		String texto = br.readLine();
 
-		//Vai pegando todas as linhas da entrada
-		while (linha != null) {
-                    List<String> comentarios = commentPrinter(linha);
 
-		    //E exibe todos os comentários dessa linha, caso haja pelo menos um
-                    if (comentarios != null) {
-                        comentarios.forEach(System.out::println);
-                    }
+		
+		if (texto != null) {
+
+			//Vai pegando todas as linhas da entrada e colocando na variavel "texto"
+			String novaLinha = br.readLine();
+			while (novaLinha != null) {
+				texto = texto + "\n" + novaLinha;
+				novaLinha = br.readLine();
+			}
+            List<String> comentarios = commentPrinter(texto);
+
+		    //E exibe todos os comentários encontrados, caso haja pelo menos um
+            if (comentarios != null) {
+                comentarios.forEach(System.out::println);
+            }
 
 		    //E le a proxima linha
-	  	    linha = br.readLine();
+	  	    
 		}
 	}
 }
