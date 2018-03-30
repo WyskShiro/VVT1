@@ -104,7 +104,7 @@ public class Cal {
 	 * @return: Um valor entre 0 e 6 que corresponde ao dia da semana que cai o dia
 	 *          1/m/a
 	 */
-	int firstOfMonth(int m, int a) {
+	int firstOfMonth(int m, int a)  {
 		int k = 0;
 		if (isLeap(a) && m > 2)
 			k++;
