@@ -14,17 +14,8 @@ class CalTest {
 	
 	
 	/*
-	 * Fiz mais pra testar a ideia mesmo
-	 * */
-	@Test
-	void testPrimeiroDia2018() {
-		assertSame(1, calTest.firstOfMonth(1, 2018));
-	}
-	
-	/*
 	 * Casos de teste - First of month
 	 * */
-	
 	@Test
 	void testPrimeiroDiaAnoBissexto2016Mes3() {
 		assertSame(2, calTest.firstOfMonth(3, 2016));
@@ -44,6 +35,34 @@ class CalTest {
 	void testPrimeiroDia1752Mes10() {
 		assertSame(0, calTest.firstOfMonth(10, 1752));
 	}
+	
+	
+	
+	/*
+	 * Casos de teste do método firstDayOfMonth
+	 * Para verificar qual dia da semana é o primeiro dia do mês
+	 * */
+	@Test
+	void testAnoBissextoEFevereiro() {
+		assertSame(29, calTest.numberOfDays(2, 2000));
+	}
+	
+	@Test
+	void testAno1752Setembro() {
+		assertSame(19, calTest.numberOfDays(9, 1752));
+	}
+	
+	@Test
+	void testAnoNaoBissextoEMesDiferenteDeFevereiroSetembro() {
+		assertSame(31, calTest.numberOfDays(1, 2001));
+	}
+
+	
+	
+	/*
+	 * Casos de teste do método isLeap
+	 * Para verificar se o ano é bissexto
+	 * */
 	@Test
 	void testAnoBissextoAntes1752true(){
 		assertEquals(true, calTest.isLeap(1304));
