@@ -44,5 +44,34 @@ class CalTest {
 	void testPrimeiroDia1752Mes10() {
 		assertSame(0, calTest.firstOfMonth(10, 1752));
 	}
+	@Test
+	void testAnoBissextoAntes1752true(){
+		assertEquals(true, calTest.isLeap(1304));
+	}
+	
+	@Test
+	void testAnoBissextoAntes1752false(){
+		assertEquals(false, calTest.isLeap(1305));
+	}
+	
+	@Test
+	void testAnoBissextoDepois1752resto0por400(){
+		assertEquals(true, calTest.isLeap(2400));
+	}
+	
+	@Test
+	void testAnoBissextoDepois1752resto0por100(){
+		assertEquals(false, calTest.isLeap(2100));
+	}
+	
+	@Test
+	void testAnoBissextoDepois1752resto0por4(){
+		assertEquals(true, calTest.isLeap(2004));
+	}
+	
+	@Test
+	void testAnoBissextoDepois1752(){
+		assertEquals(true, calTest.isLeap(2016));
+	}
 
 }
