@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Before;
@@ -11,7 +12,7 @@ class CalTest {
 	void preparar() {
 		calTest = new Cal();
 	}
-	
+
 	
 	/*
 	 * Casos de teste - First of month
@@ -92,5 +93,43 @@ class CalTest {
 	void testAnoBissextoDepois1752(){
 		assertEquals(true, calTest.isLeap(2016));
 	}
+	
+	/*
+	 * Casos de teste do método isLeap
+	 * Para verificar se o ano é bissexto
+	 * */
+	@Test
+	void testMesCom19Dias(){
+		assertEquals(calTest.cal(5, 19), "       1  2 14 15 16\n17 18 19 20 21 22 23\n24 25 26 27 28 29 30");
+	}
+	
+	@Test
+	void testMesCom29Dias(){
+		assertEquals(calTest.cal(2, 29), "       1  2  3  4  5\n" + 
+				" 6  7  8  9 10 11 12\n" + 
+				"13 14 15 16 17 18 19\n" + 
+				"20 21 22 23 24 25 26\n" + 
+				"27 28 29 ");
+	}
+	
+	@Test
+	void testMesCom30Dias(){
+		assertEquals(calTest.cal(6, 30), "                   1\n" + 
+				" 2  3  4  5  6  7  8\n" + 
+				" 9 10 11 12 13 14 15\n" + 
+				"16 17 18 19 20 21 22\n" + 
+				"23 24 25 26 27 28 29\n" + 
+				"30 ");
+	}
+	
+	@Test
+	void testMesCom31Dias(){
+		assertEquals(calTest.cal(1, 31), "    1  2  3  4  5  6\n" + 
+				" 7  8  9 10 11 12 13\n" + 
+				"14 15 16 17 18 19 20\n" + 
+				"21 22 23 24 25 26 27\n" + 
+				"28 29 30 31 ");
+	}
+	
 
 }
