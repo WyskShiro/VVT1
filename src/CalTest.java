@@ -131,5 +131,15 @@ class CalTest {
 				"28 29 30 31 ");
 	}
 	
-
+	/* Testes para o metodo jan1 */
+	@Test
+	void testDiaAnoNormalMenor1752(){
+		assertEquals(2, calTest.jan1(1023));
+	}
+	
+	@Test
+	void testDiaAnoNormalMaior1800(){
+		assertEquals(1, calTest.jan1(2018));
+	}
+	
 }
