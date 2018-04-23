@@ -40,6 +40,7 @@ class CalTest {
     		assertNotEquals(resultado, "");
     }
     
+    
     @Test
     void testAnoValido() {
     		String[] ano = {"2018"};
@@ -85,6 +86,32 @@ class CalTest {
     		assertNotEquals(resultado, "");
     }
     
+    @Test
+    void testAnoInvalidoString() {
+    		String[] ano = {"ano invalido"};
+    		calTest.main(ano);
+    		String resultado = bOut.toString();
+    		
+    		assertNotEquals(resultado, "");
+    }
+    
+    @Test
+    void testAnoInvalidoMesInvalidoString() {
+    		String[] ano = {"mes invalido", "ano invalido"};
+    		calTest.main(ano);
+    		String resultado = bOut.toString();
+    		
+    		assertNotEquals(resultado, "");
+    }
+    
+    @Test
+    void testAnoInvalidoMesValidoString() {
+    		String[] ano = {"12", "ano invalido"};
+    		calTest.main(ano);
+    		String resultado = bOut.toString();
+    		
+    		assertNotEquals(resultado, "");
+    }
     
     @Test
     void testAnoValidoMesInvalidoMaior() {
@@ -389,6 +416,36 @@ class CalTest {
         }       
     }
     
+    @Test
+    void testMes2AnoBissexto() {
+        try {
+            int quantidadeDias = calTest.numberOfDays(2, 2000);
+
+        } catch (Exception e) {
+            System.out.println("Exception lançada");
+        }       
+    }
+    
+    @Test
+    void testMes1752Mes10() {
+        try {
+            int quantidadeDias = calTest.numberOfDays(10, 1752);
+
+        } catch (Exception e) {
+            System.out.println("Exception lançada");
+        }       
+    }
+    
+    @Test
+    void testMes1752Mes9() {
+        try {
+            int quantidadeDias = calTest.numberOfDays(9, 1752);
+
+        } catch (Exception e) {
+            System.out.println("Exception lançada");
+        }       
+    }
+    
     
     
     
@@ -532,6 +589,17 @@ class CalTest {
     void testDdsSuperiorQuantidadeSuperior_Cal() {
         try {
             String calendarioDoMes = calTest.cal(13, 32);
+            fail("Para um dia da semana e quantidade de dias inválidos, deve ser lançada e tratada uma exceção");
+        } catch (Exception e) {
+            System.out.println("Exception lançada");
+        }       
+    }
+    
+    
+    @Test
+    void testDdsPossivelQuantidade19() {
+        try {
+            String calendarioDoMes = calTest.cal(0, 19);
             fail("Para um dia da semana e quantidade de dias inválidos, deve ser lançada e tratada uma exceção");
         } catch (Exception e) {
             System.out.println("Exception lançada");
